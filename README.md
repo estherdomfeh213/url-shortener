@@ -9,7 +9,7 @@ Frontend: https://url-shortener-frontend-234-1762869741.s3.af-south-1.amazonaws.
 API: https://opi1s5dgdl.execute-api.af-south-1.amazonaws.com/Prod
 
 ## Architecture
-
+![URL Shortener Architecture](Architecture.png)
 ```mermaid
 graph TB
     A[User] --> B[Frontend - S3]

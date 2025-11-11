@@ -4,7 +4,7 @@ A production-ready serverless URL shortener built with AWS Lambda, API Gateway, 
 
 ## Live Demo
 
-Frontend: http://url-shortener-frontend-234-1762869741.s3-website-af-south-1.amazonaws.com
+Frontend: https://url-shortener-frontend-234-1762869741.s3.af-south-1.amazonaws.com/index.html
 
 API: https://opi1s5dgdl.execute-api.af-south-1.amazonaws.com/Prod
 
@@ -156,7 +156,7 @@ Response: 302 Redirect to original URL
 
 
 ## 💡 Usage Example
-1. Visit the frontend: http://url-shortener-frontend-234-1762869741.s3-website-af-south-1.amazonaws.com
+1. Visit the frontend: https://url-shortener-frontend-234-1762869741.s3.af-south-1.amazonaws.com/index.html
 
 2. Enter a long URL (e.g., https://aws.amazon.com/cloudfront/features/)
 

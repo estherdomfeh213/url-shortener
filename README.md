@@ -41,17 +41,17 @@ graph TB
 
 ## Tech Stack
 
-Backend:
+### Backend:
 - AWS Lambda (Python 3.12)
 - API Gateway (REST API)
 - DynamoDB (NoSQL Database)
 - IAM (Security & Permissions)
 
-Frontend:
+### Frontend:
 - HTML5, CSS3, JavaScript
 - AWS S3 (Static Website Hosting)
 
-Infrastructure:
+### Infrastructure:
 - AWS SAM (Infrastructure as Code)
 - CloudFormation (Deployment)
 

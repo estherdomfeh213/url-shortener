@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener | Serverless AWS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AWS URL Shortener</h1>
+            <p>Serverless URL shortening service built with AWS Lambda, API Gateway, and DynamoDB</p>
+        </header>
+
+        <main>
+            <div class="url-form">
+                <h2>Shorten Your URL</h2>
+                <form id="shortenForm">
+                    <div class="input-group">
+                        <input type="url" id="urlInput" placeholder="https://example.com" required>
+                        <button type="submit">Shorten</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="result" class="result hidden">
+                <h3>Your Short URL:</h3>
+                <div class="short-url">
+                    <a id="shortUrlLink" target="_blank"></a>
+                    <button id="copyBtn">Copy</button>
+                </div>
+                <div class="url-info">
+                    <p><strong>Original URL:</strong> <span id="originalUrl"></span></p>
+                    <p><strong>Clicks:</strong> <span id="clickCount">0</span></p>
+                </div>
+            </div>
+
+            <div class="features">
+                <h3>AWS Services Used</h3>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h4>AWS Lambda</h4>
+                        <p>Serverless compute for URL processing</p>
+                    </div>
+                    <div class="service-card">
+                        <h4>API Gateway</h4>
+                        <p>REST API endpoints for URL management</p>
+                    </div>
+                    <div class="service-card">
+                        <h4>DynamoDB</h4>
+                        <p>NoSQL database for URL storage</p>
+                    </div>
+                    <div class="service-card">
+                        <h4>IAM</h4>
+                        <p>Security and access management</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

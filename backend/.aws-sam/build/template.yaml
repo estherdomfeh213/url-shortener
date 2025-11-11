@@ -1,0 +1,62 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Simple Reliable URL Shortener
+Resources:
+  UrlTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: url-shortener-simple
+      AttributeDefinitions:
+      - AttributeName: short_code
+        AttributeType: S
+      KeySchema:
+      - AttributeName: short_code
+        KeyType: HASH
+      BillingMode: PAY_PER_REQUEST
+  CreateFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: url-create-simple
+      CodeUri: CreateFunction
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.12
+      Policies:
+      - DynamoDBCrudPolicy:
+          TableName:
+            Ref: UrlTable
+      Events:
+        CreateApi:
+          Type: Api
+          Properties:
+            Path: /create
+            Method: post
+    Metadata:
+      SamResourceId: CreateFunction
+  RedirectFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: url-redirect-simple
+      CodeUri: RedirectFunction
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.12
+      Policies:
+      - DynamoDBCrudPolicy:
+          TableName:
+            Ref: UrlTable
+      Events:
+        RedirectApi:
+          Type: Api
+          Properties:
+            Path: /r/{short_code}
+            Method: get
+    Metadata:
+      SamResourceId: RedirectFunction
+Outputs:
+  ApiUrl:
+    Description: API Gateway Base URL
+    Value:
+      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod
+  CreateEndpoint:
+    Description: Create URL Endpoint
+    Value:
+      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/create

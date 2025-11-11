@@ -10,23 +10,25 @@ API: https://opi1s5dgdl.execute-api.af-south-1.amazonaws.com/Prod
 
 ## Architecture
 ![URL Shortener Architecture](Architecture.png)
-```mermaid
-graph TB
-    A[User] --> B[Frontend - S3]
-    B --> C[API Gateway]
-    C --> D[Create Lambda]
-    C --> E[Redirect Lambda]
-    D --> F[DynamoDB]
-    E --> F
-    E --> G[302 Redirect]
-    
-    style A fill:#ff6b6b
-    style B fill:#4ecdc4
-    style C fill:#45b7d1
-    style D fill:#96ceb4
-    style E fill:#96ceb4
-    style F fill:#feca57
-```
+
+### System Design
+
+User → S3 Frontend → API Gateway → Lambda Functions → DynamoDB → 302 Redirect
+text
+
+
+### Component Responsibilities
+- **S3 Frontend**: Static website hosting with responsive UI
+- **API Gateway**: REST API endpoints with CORS configuration
+- **Lambda Functions**: Serverless compute for URL processing
+- **DynamoDB**: NoSQL database for URL storage and analytics
+- **IAM**: Security and access management
+
+### Data Flow
+1. **URL Creation**: User submits URL → API Gateway → Create Lambda → DynamoDB
+2. **URL Redirection**: User clicks short URL → API Gateway → Redirect Lambda → 302 Redirect
+3. **Analytics**: Each redirect increments click counter in DynamoDB
+
 
 
 ## Features
